@@ -1,11 +1,10 @@
-package io.hrmanagementapp.hrspace;
+package io.hrmanagementapp.hrspace.employeemanagement;
 
-import java.util.Calendar;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection="Employee")
 public class Employee {
 	
 	@Id
@@ -15,7 +14,6 @@ public class Employee {
 	private String birthDate;
 	private String startDate;
 	private int remainingLeaveCredit;	//in days (8h per day)
-	private double hourlyPay;
 	private double salary;
 	
 	public Employee() {}
@@ -31,7 +29,6 @@ public class Employee {
 		this.birthDate = birthDate;
 		this.startDate = startDate;
 		this.remainingLeaveCredit = remainingLeaveCredit;
-		this.hourlyPay = hourlyPay;
 		this.salary = salary;
 		
 	}
@@ -79,32 +76,6 @@ public class Employee {
 	}
 	public void setSalary(double salary) {
 		this.salary = salary;
-	}
-	public double getHourlyPay() {
-		return hourlyPay;
-	}
-	public void setHourlyPay(double hourlyPay) {
-		this.hourlyPay = hourlyPay;
-	}
-	
-	// App logic
-	
-	public void calcSalary() {
-		
-		Calendar c = Calendar.getInstance();
-		int numDaysCMonth = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-		
-		if(this.remainingLeaveCredit>=0) {
-			this.salary = this.hourlyPay * numDaysCMonth *8;
-		}else {
-			this.salary = this.hourlyPay * (numDaysCMonth + this.remainingLeaveCredit) *8;
-		}
-	}
-	public void CalcRemainingLeaveCredit() {
-		Calendar c = Calendar.getInstance();
-		if(c.get(Calendar.DAY_OF_MONTH) == 1) {
-			this.remainingLeaveCredit++;
-		}
 	}
 
 }

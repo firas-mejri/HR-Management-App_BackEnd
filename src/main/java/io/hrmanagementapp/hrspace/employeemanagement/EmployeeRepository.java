@@ -1,4 +1,4 @@
-package io.hrmanagementapp.hrspace;
+package io.hrmanagementapp.hrspace.employeemanagement;
 
 
 import org.springframework.data.mongodb.repository.MongoRepository;

@@ -1,4 +1,4 @@
-package io.hrmanagementapp.hrspace;
+package io.hrmanagementapp.hrspace.employeemanagement;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@RequestMapping("/employee")
-	public List<Employee> getAllEmployees(){
+	public List<String> getAllEmployees(){
 		return employeeService.getAllEmployees();
 	}
 	
@@ -33,9 +33,9 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/employee/{id}")
-	public void updateEmployee(@RequestBody Employee employee,@PathVariable String id) {
+	public String updateEmployee(@RequestBody Employee employee,@PathVariable String id) {
 		
-		employeeService.updateEmployee(employee, id);
+		return employeeService.updateEmployee(employee, id);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/employee/{id}")
