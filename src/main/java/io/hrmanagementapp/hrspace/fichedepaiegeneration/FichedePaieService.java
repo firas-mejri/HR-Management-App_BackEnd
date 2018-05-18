@@ -20,6 +20,7 @@ public class FichedePaieService {
 			fichedePaie = fichedePaieRepository.findById(id).get();
 			fichedePaie.LeaveCreditCalc();
 			fichedePaie.NetSalaryCalc();
+			fichedePaieRepository.save(fichedePaie);
 			return fichedePaie;
 		}else {
 			return null;

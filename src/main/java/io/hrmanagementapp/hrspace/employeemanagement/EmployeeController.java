@@ -3,6 +3,7 @@ package io.hrmanagementapp.hrspace.employeemanagement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,12 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
-	
+	@CrossOrigin
 	@RequestMapping("/employee")
 	public List<String> getAllEmployees(){
 		return employeeService.getAllEmployees();
 	}
-	
+	@CrossOrigin
 	@RequestMapping("/employee/{id}")
 	public Employee getEmployeeById(@PathVariable String id) {
 		
