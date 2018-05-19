@@ -2,9 +2,10 @@ package io.hrmanagementapp.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+import io.hrmanagementapp.user.ApplicationUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.hrmanagementapp.user.ApplicationUser;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -63,6 +64,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
                 .compact();
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.setHeader("Cache-Control", TOKEN_PREFIX + token);
     }
 }

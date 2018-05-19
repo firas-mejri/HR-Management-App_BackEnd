@@ -15,6 +15,7 @@ public class HrManagementAppBeApplication {
         return new BCryptPasswordEncoder();
     }
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(HrManagementAppBeApplication.class, args);
 	}
